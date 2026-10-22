@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;500;600;700;800&family=Nunito:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  /* Organic / Natural Design Tokens */
+  --bg-primary: #FDFCF8;        /* Off-white, Rice Paper */
+  --bg-card: #FEFEFA;           /* Warm Alabaster Card */
+  --bg-card-subtle: #F7F4EE;    /* Soft Stone Card */
+  --bg-card-hover: #F2ECE1;     /* Lifted Card Hover */
+  
+  --foreground: #2C2C24;        /* Deep Loam / Charcoal */
+  --text-primary: #2C2C24;
+  --text-secondary: #5A5A4E;    /* Earthy Bark */
+  --text-muted: #78786C;        /* Dried Grass */
+  
+  --primary: #5D7052;           /* Moss Green */
+  --primary-foreground: #F3F4F1;/* Pale Mist */
+  --secondary: #C18C5D;         /* Terracotta / Clay */
+  --secondary-foreground: #FFFFFF;
+  --accent: #E6DCCD;            /* Sand / Warm Beige */
+  --accent-foreground: #4A4A40; /* Bark */
+  --muted: #F0EBE5;             /* River Stone */
+  --border-color: #DED8CF;      /* Raw Timber */
+  --border-subtle: #E8E2D8;
+  
+  /* Financial Polarity (Earthy Moss vs Burnt Sienna) */
+  --bullish: #5D7052;           /* Moss Green */
+  --bullish-bg: rgba(93, 112, 82, 0.12);
+  --bearish: #A85448;           /* Burnt Sienna */
+  --bearish-bg: rgba(168, 84, 72, 0.12);
+  --neutral-pill: #78786C;      /* Dried Grass */
+  --neutral-pill-bg: rgba(120, 120, 108, 0.12);
+  --cyan-accent: #557A82;       /* Slate Brook */
+  --amber-accent: #C18C5D;      /* Terracotta */
+  --purple-accent: #8A6D88;     /* Heather Flower */
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow-x: hidden;
+  font-feature-settings: 'tnum' on, 'zero' on;
+  position: relative;
+}
+
+/* Paper Grain Texture Overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.035;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+.font-fraunces {
+  font-family: 'Fraunces', Georgia, serif;
+  font-feature-settings: 'soft' 100;
+}
+
+.font-nunito {
+  font-family: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.font-mono-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-feature-settings: 'tnum' on;
+}
+
+/* Organic Soft Shadows */
+.shadow-organic-soft {
+  box-shadow: 0 4px 20px -2px rgba(93, 112, 82, 0.12);
+}
+
+.shadow-organic-float {
+  box-shadow: 0 10px 40px -10px rgba(193, 140, 93, 0.18);
+}
+
+.shadow-organic-subtle {
+  box-shadow: 0 2px 10px -1px rgba(74, 74, 64, 0.06);
+}
+
+/* Custom Organic Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F7F4EE;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #DED8CF;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #C18C5D;
+}
+
+/* Pulse Beacon in Moss Green */
+@keyframes natural-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.pulse-beacon-natural {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #5D7052;
+  box-shadow: 0 0 10px rgba(93, 112, 82, 0.6);
+  animation: natural-pulse 2.2s infinite ease-in-out;
+}
+

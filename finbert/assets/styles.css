@@ -1,0 +1,348 @@
+/* EdgeFinder Institutional Financial Terminal Stylesheet */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --bg-primary: #080c12;
+    --bg-secondary: #0f1521;
+    --bg-card: #131b2b;
+    --bg-hover: #1b263b;
+    --border-color: #1e293b;
+    --border-glow: rgba(56, 189, 248, 0.2);
+    
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    
+    --terminal-green: #05d554;
+    --terminal-green-bg: rgba(5, 213, 84, 0.12);
+    --terminal-green-border: rgba(5, 213, 84, 0.35);
+    
+    --terminal-red: #f43f5e;
+    --terminal-red-bg: rgba(244, 63, 94, 0.12);
+    --terminal-red-border: rgba(244, 63, 94, 0.35);
+    
+    --terminal-neutral: #94a3b8;
+    --terminal-neutral-bg: rgba(148, 163, 184, 0.12);
+    --terminal-neutral-border: rgba(148, 163, 184, 0.3);
+    
+    --terminal-cyan: #38bdf8;
+    --terminal-amber: #fbbf24;
+}
+
+/* Global App Container */
+.stApp {
+    background-color: var(--bg-primary) !important;
+    color: var(--text-primary) !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+/* Header & Status Bar */
+.terminal-header {
+    background: linear-gradient(180deg, #111827 0%, #0c121d 100%);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 14px 20px;
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.terminal-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.terminal-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 1.25rem;
+    letter-spacing: 0.08em;
+    color: #ffffff;
+    margin: 0;
+}
+
+.terminal-badge {
+    background: rgba(56, 189, 248, 0.15);
+    color: var(--terminal-cyan);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.terminal-status-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(5, 213, 84, 0.08);
+    border: 1px solid var(--terminal-green-border);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--terminal-green);
+}
+
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--terminal-green);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--terminal-green);
+    animation: blink 2s infinite ease-in-out;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+/* Metric Cards */
+.metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.terminal-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 16px 18px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.terminal-card:hover {
+    border-color: #334155;
+    transform: translateY(-1px);
+}
+
+.terminal-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+}
+
+.card-accent-cyan::before { background: var(--terminal-cyan); }
+.card-accent-green::before { background: var(--terminal-green); }
+.card-accent-red::before { background: var(--terminal-red); }
+.card-accent-neutral::before { background: var(--terminal-neutral); }
+.card-accent-amber::before { background: var(--terminal-amber); }
+
+.card-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    letter-spacing: 0.06em;
+    margin-bottom: 6px;
+}
+
+.card-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.2;
+}
+
+.card-subtext {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Sentiment Badges */
+.badge-positive {
+    background: var(--terminal-green-bg);
+    color: var(--terminal-green);
+    border: 1px solid var(--terminal-green-border);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    display: inline-block;
+    letter-spacing: 0.03em;
+}
+
+.badge-negative {
+    background: var(--terminal-red-bg);
+    color: var(--terminal-red);
+    border: 1px solid var(--terminal-red-border);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    display: inline-block;
+    letter-spacing: 0.03em;
+}
+
+.badge-neutral {
+    background: var(--terminal-neutral-bg);
+    color: var(--terminal-neutral);
+    border: 1px solid var(--terminal-neutral-border);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    display: inline-block;
+    letter-spacing: 0.03em;
+}
+
+/* Horizontal Probability Bars */
+.prob-container {
+    margin: 12px 0;
+}
+
+.prob-header {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    margin-bottom: 4px;
+}
+
+.prob-bar-bg {
+    width: 100%;
+    height: 10px;
+    background: #1e293b;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.prob-bar-fill-positive {
+    height: 100%;
+    background: linear-gradient(90deg, #10b981 0%, #05d554 100%);
+    border-radius: 5px;
+}
+
+.prob-bar-fill-negative {
+    height: 100%;
+    background: linear-gradient(90deg, #e11d48 0%, #f43f5e 100%);
+    border-radius: 5px;
+}
+
+.prob-bar-fill-neutral {
+    height: 100%;
+    background: linear-gradient(90deg, #64748b 0%, #94a3b8 100%);
+    border-radius: 5px;
+}
+
+/* News Article Card */
+.headline-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    transition: background 0.15s ease;
+}
+
+.headline-item:hover {
+    background: var(--bg-hover);
+}
+
+.headline-text {
+    font-size: 0.92rem;
+    line-height: 1.45;
+    color: #f1f5f9;
+    margin-bottom: 8px;
+}
+
+.headline-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* Telemetry Box */
+.telemetry-box {
+    background: #090d14;
+    border: 1px solid #1e293b;
+    border-radius: 6px;
+    padding: 12px 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: #94a3b8;
+    line-height: 1.6;
+}
+
+.telemetry-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 2px 0;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
+}
+
+.telemetry-row:last-child {
+    border-bottom: none;
+}
+
+/* Sidebar Customization */
+section[data-testid="stSidebar"] {
+    background-color: var(--bg-secondary) !important;
+    border-right: 1px solid var(--border-color) !important;
+}
+
+/* Streamlit Native Overrides */
+div[data-testid="stMetricValue"] {
+    font-family: 'JetBrains Mono', monospace !important;
+    font-weight: 700 !important;
+}
+
+button[kind="primary"] {
+    background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%) !important;
+    border: 1px solid #38bdf8 !important;
+    color: #38bdf8 !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.04em !important;
+    transition: all 0.2s ease !important;
+}
+
+button[kind="primary"]:hover {
+    background: #38bdf8 !important;
+    color: #090d16 !important;
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.4) !important;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #090d16;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #243247;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #334661;
+}
