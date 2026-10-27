@@ -1,6 +1,8 @@
 
 FROM pytorch/pytorch:latest
 
+WORKDIR /src
+
 RUN pip install --no-cache-dir \
     numpy pandas nltk Flask flask-cors \
     transformers==4.41.2
